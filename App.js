@@ -5,11 +5,23 @@ export default class App extends React.Component{
   constructor(props){
     super(props);
     this.state={
-     gameState : [],
+     gamePositions : [],
      currentPlayer : 1
     }
   }
-  
+  componentDidMount(){
+    this.positions();
+  }
+positions =() => {
+  this.setState=({gameState:
+    [
+      [0,0,0],
+      [0,0,0],
+      [0,0,0]
+    ]
+  });
+}
+
   render(){
   return (
     <View style={styles.container}>
@@ -60,7 +72,12 @@ const styles = StyleSheet.create({
   },
   img:{
     width:55,
-    height:55
+    height:55,
+    top:13,
+    transform:[
+      {translateX:17}
+    ],
+    
   }
   
 });
