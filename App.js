@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View ,Image} from 'react-native';
 
 export default function App() {
   return (
@@ -7,6 +7,7 @@ export default function App() {
       
        <View style={styles.square}>
        <View style={styles.line}/>
+       <Image source={require('./ordenanza.png')} />
        <View style={[styles.line, {
          transform: [{translateX:166}]
        }]}/>
