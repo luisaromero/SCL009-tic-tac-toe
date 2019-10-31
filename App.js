@@ -1,21 +1,30 @@
 import React from 'react';
 import { StyleSheet, Text, View ,Image} from 'react-native';
 
-export default function App() {
+export default class App extends React.Component{
+  constructor(props){
+    super(props);
+    this.state={
+     gameState : [],
+     currentPlayer : 1
+    }
+  }
+  
+  render(){
   return (
     <View style={styles.container}>
       
        <View style={styles.square}>
-       <View style={styles.line}/>
-       <Image source={require('./ordenanza.png')} />
+       <Image source={require('./img/ordenanza.png')} style={styles.img}/>
+       <View style={styles.line}>
+       <Image source={require('./img/hombre-arana.png')} style={styles.img}/></View>
        <View style={[styles.line, {
-         transform: [{translateX:166}]
-       }]}/>
+         transform: [{translateX:166}] }]}/>
         <View style={[styles.line, {
           width:244,
           height:3,
          transform: [{translateY:166}]
-       }]}/>
+       }]}/> 
         <View style={[styles.line, {
           width:244,
           height:3,
@@ -24,7 +33,7 @@ export default function App() {
        </View>
     </View>
   );
-}
+}}
 
 const styles = StyleSheet.create({
   container: {
@@ -48,6 +57,10 @@ const styles = StyleSheet.create({
     transform:[
       {translateX:83}
     ]
+  },
+  img:{
+    width:55,
+    height:55
   }
   
 });
