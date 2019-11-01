@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View ,Image} from 'react-native';
+import { StyleSheet, Text, View ,Image , TouchableOpacity} from 'react-native';
 
 export default class App extends React.Component{
   constructor(props){
@@ -28,6 +28,12 @@ positions =() => {
     ]
   });
 }
+//  Función que toma como parámetros , el n° de columna y de fila , siendo 0 la primera fila,
+//  la segunda fila 1 y la tercera fila 2
+showTheImg(){
+
+}
+
   render(){
   return (
     <View style={styles.container}>
