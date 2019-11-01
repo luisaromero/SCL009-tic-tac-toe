@@ -20,40 +20,61 @@ export default class App extends React.Component{
   }
   // <--Posiciones en el tablero-->
 positions =() => {
-  this.setState=({gameState:
+  this.setState=({gamePositions:
     [
-      [0,0,0],
+      [1,0,0],
       [0,0,0],
       [0,0,0]
     ]
   });
 }
-//  Función que toma como parámetros , el n° de columna y de fila , siendo 0 la primera fila,
+//  Función que toma como parámetros , el n° de columna y n° de fila , siendo 0 la primera fila,
 //  la segunda fila 1 y la tercera fila 2
-showTheImg(){
-
+showTheImg =(row,col) =>{
+let value = this.state.gamePositions[row][col];
+switch(value) {
+case 1: return <Image source={require('./img/ordenanza.png')} style={styles.img}/>
+case -1: return <Image source={require('./img/hombre-arana.png')} style={styles.img}/>
+default: <View/>;
+}
 }
 
   render(){
   return (
-    <View style={styles.container}>
-       <View style={styles.square}>
-       <Image source={require('./img/ordenanza.png')} style={styles.img}/>
-       <View style={styles.line}>
-       <Image source={require('./img/hombre-arana.png')} style={styles.img}/></View>
-       <View style={[styles.line, {
-         transform: [{translateX:166}] }]}/>
-        <View style={[styles.line, {
-          width:244,
-          height:3,
-         transform: [{translateY:166}]
-       }]}/> 
-        <View style={[styles.line, {
-          width:244,
-          height:3,
-         transform: [{translateY:83}]
-       }]}/>
+    <View style={styles.container}>  
+      {/* Primera fila de tres cuadrados  */}
+      <View style={styles.rowStyle}>
+          {/* BorderWidth es el grosor de la linea de borde , por lo que le damos valor 0
+      (sin ningun grosor, por lo que desaparece) al borde que queremos que no se vea para formar el "#" */}
+      
+       <View style={[styles.squares ,{borderLeftWidth:0 ,borderTopWidth:0 }]}>
+         {this.showTheImg(0,0)}
        </View>
+       <View style={[styles.squares , {borderTopWidth:0 }]}>
+       {this.showTheImg(0,1)}
+       </View>
+       <View style={[styles.squares, {borderRightWidth:0 ,borderTopWidth:0 }]}>
+       {this.showTheImg(0,2)}
+       </View>
+    </View>
+    {/* Segunda fila de tres cuadrados  */}
+    <View style={styles.rowStyle}>
+       <View style={[styles.squares, {borderLeftWidth:0}]}>
+       </View>
+       <View style={styles.squares}>
+       </View>
+       <View style={[styles.squares, {borderRightWidth:0 }]}>
+       </View>
+    </View>
+    {/* Tercera fila de tres cuadrados  */}
+    <View style={styles.rowStyle}>
+       <View style={[styles.squares, {borderLeftWidth:0,borderBottomWidth:0 }]}>
+       </View>
+       <View style={[styles.squares, {borderBottomWidth:0  }]}>
+       </View>
+       <View style={[styles.squares, {borderRightWidth:0 ,borderBottomWidth:0}]}>
+       </View>
+    </View>
     </View>
   );
 }}
@@ -61,32 +82,22 @@ showTheImg(){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'pink',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
     top:20
   },
-  square: {
-    borderColor:'pink',
-  borderWidth:3,
-    height:250,
-    width:250,
+  squares: {
+  borderColor:'pink',
+  borderWidth:2,
+    height:75,
+    width:75
   },
-  line:{
-    backgroundColor:'black',
-    width:3,
-    height:244,
-    position:'absolute',
-    transform:[
-      {translateX:83}
-    ]
+  rowStyle:{
+ flexDirection:"row"
   },
   img:{
     width:55,
     height:55,
-    top:13,
-    transform:[
-      {translateX:17}
-    ],  
   }
 });
