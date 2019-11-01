@@ -5,7 +5,12 @@ export default class App extends React.Component{
   constructor(props){
     super(props);
     this.state={
-     gamePositions : [],
+     gamePositions : [
+        // <--Posiciones en el tablero-->
+      [0,0,0],
+      [0,0,0],
+      [0,0,0]
+     ],
      currentPlayer : 1
     }
   }
