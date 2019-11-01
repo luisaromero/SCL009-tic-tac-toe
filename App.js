@@ -47,39 +47,39 @@ default: <View/>;
           {/* BorderWidth es el grosor de la linea de borde , por lo que le damos valor 0
       (sin ningun grosor, por lo que desaparece) al borde que queremos que no se vea para formar el "#" */}
       
-       <View style={[styles.squares ,{borderLeftWidth:0 ,borderTopWidth:0 }]}>
+       <TouchableOpacity style={[styles.squares ,{borderLeftWidth:0 ,borderTopWidth:0 }]}>
          {this.showTheImg(0,0)}
-       </View>
-       <View style={[styles.squares , {borderTopWidth:0 }]}>
+       </TouchableOpacity>
+       <TouchableOpacity style={[styles.squares , {borderTopWidth:0 }]}>
        {this.showTheImg(0,1)}
-       </View>
-       <View style={[styles.squares, {borderRightWidth:0 ,borderTopWidth:0 }]}>
+       </TouchableOpacity>
+       <TouchableOpacity style={[styles.squares, {borderRightWidth:0 ,borderTopWidth:0 }]}>
        {this.showTheImg(0,2)}
-       </View>
+       </TouchableOpacity>
     </View>
     {/* Segunda fila de tres cuadrados  */}
     <View style={styles.rowStyle}>
-       <View style={[styles.squares, {borderLeftWidth:0}]}>
+       <TouchableOpacity style={[styles.squares, {borderLeftWidth:0}]}>
        {this.showTheImg(1,0)}
-       </View>
-       <View style={styles.squares}>
+       </TouchableOpacity>
+       <TouchableOpacity style={styles.squares}>
        {this.showTheImg(1,1)}
-       </View>
-       <View style={[styles.squares, {borderRightWidth:0 }]}>
+       </TouchableOpacity>
+       <TouchableOpacity style={[styles.squares, {borderRightWidth:0 }]}>
        {this.showTheImg(1,2)}
-       </View>
+       </TouchableOpacity>
     </View>
     {/* Tercera fila de tres cuadrados  */}
     <View style={styles.rowStyle}>
-       <View style={[styles.squares, {borderLeftWidth:0,borderBottomWidth:0 }]}>
+       <TouchableOpacity style={[styles.squares, {borderLeftWidth:0,borderBottomWidth:0 }]}>
        {this.showTheImg(2,0)}
-       </View>
-       <View style={[styles.squares, {borderBottomWidth:0  }]}>
+       </TouchableOpacity>
+       <TouchableOpacity style={[styles.squares, {borderBottomWidth:0  }]}>
        {this.showTheImg(2,1)}
-       </View>
-       <View style={[styles.squares, {borderRightWidth:0 ,borderBottomWidth:0}]}>
+       </TouchableOpacity>
+       <TouchableOpacity style={[styles.squares, {borderRightWidth:0 ,borderBottomWidth:0}]}>
        {this.showTheImg(2,2)}
-       </View>
+       </TouchableOpacity>
     </View>
     </View>
   );
