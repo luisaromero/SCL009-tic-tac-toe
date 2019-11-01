@@ -28,6 +28,9 @@ positions =() => {
     ]
   });
 }
+pressTheSquare=()=>{
+  
+}
 //  Función que toma como parámetros , el n° de columna y n° de fila , siendo 0 la primera fila,
 //  la segunda fila 1 y la tercera fila 2
 showTheImg =(row,col) =>{
