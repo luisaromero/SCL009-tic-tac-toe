@@ -9,9 +9,11 @@ export default class App extends React.Component{
      currentPlayer : 1
     }
   }
+  // <--Montando función al iniciar la app-->
   componentDidMount(){
     this.positions();
   }
+  // <--Posiciones en el tablero-->
 positions =() => {
   this.setState=({gameState:
     [
@@ -21,11 +23,9 @@ positions =() => {
     ]
   });
 }
-
   render(){
   return (
     <View style={styles.container}>
-      
        <View style={styles.square}>
        <Image source={require('./img/ordenanza.png')} style={styles.img}/>
        <View style={styles.line}>
@@ -46,7 +46,7 @@ positions =() => {
     </View>
   );
 }}
-
+// <--Estilos css-->
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -76,8 +76,6 @@ const styles = StyleSheet.create({
     top:13,
     transform:[
       {translateX:17}
-    ],
-    
+    ],  
   }
-  
 });
