@@ -22,7 +22,7 @@ export default class App extends React.Component{
 positions =() => {
   this.setState=({gamePositions:
     [
-      [1,0,0],
+      [0,0,0],
       [0,0,0],
       [0,0,0]
     ]
@@ -31,7 +31,7 @@ positions =() => {
 //  Función que toma como parámetros , el n° de columna y n° de fila , siendo 0 la primera fila,
 //  la segunda fila 1 y la tercera fila 2
 showTheImg =(row,col) =>{
-let value = this.state.gamePositions[row][col];
+var value = this.state.gamePositions[row][col];
 switch(value) {
 case 1: return <Image source={require('./img/ordenanza.png')} style={styles.img}/>
 case -1: return <Image source={require('./img/hombre-arana.png')} style={styles.img}/>
@@ -60,19 +60,25 @@ default: <View/>;
     {/* Segunda fila de tres cuadrados  */}
     <View style={styles.rowStyle}>
        <View style={[styles.squares, {borderLeftWidth:0}]}>
+       {this.showTheImg(1,0)}
        </View>
        <View style={styles.squares}>
+       {this.showTheImg(1,1)}
        </View>
        <View style={[styles.squares, {borderRightWidth:0 }]}>
+       {this.showTheImg(1,2)}
        </View>
     </View>
     {/* Tercera fila de tres cuadrados  */}
     <View style={styles.rowStyle}>
        <View style={[styles.squares, {borderLeftWidth:0,borderBottomWidth:0 }]}>
+       {this.showTheImg(2,0)}
        </View>
        <View style={[styles.squares, {borderBottomWidth:0  }]}>
+       {this.showTheImg(2,1)}
        </View>
        <View style={[styles.squares, {borderRightWidth:0 ,borderBottomWidth:0}]}>
+       {this.showTheImg(2,2)}
        </View>
     </View>
     </View>
