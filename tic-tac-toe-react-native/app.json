@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "tic-tac",
-    "slug": "tic-tac-toe",
+    "name": "Blank Template",
+    "slug": "tic-tac-toe-react-native",
     "privacy": "public",
-    "sdkVersion": "34.0.0",
+    "sdkVersion": "36.0.0",
     "platforms": [
       "ios",
       "android",
