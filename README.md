@@ -182,7 +182,7 @@ página de inicio (home screen).
      "slug": "example"
    }
  }
-```m
+```ms
 
 Esto creará una serie de archivos y carpetas, incluyendo un archivo
 `package.json`, así como un `app.json`, nuestro componente principal `App.js` y
