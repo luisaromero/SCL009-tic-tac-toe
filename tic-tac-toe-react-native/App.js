@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View ,TouchableOpacity} from 'react-native';
+import { StyleSheet, View ,TouchableOpacity , Image} from 'react-native';
 
 export default class App extends React.Component {
   constructor(props){
@@ -46,6 +46,7 @@ renderIcon =(row,col) => {
   return (
     
     <View style={styles.container}>
+      <Image style={styles.logo} source={require('./img/futuramaLogo.png')} />
       <View style={{flexDirection:"row"}}>
       <TouchableOpacity onPress={() => this.squarePress(0,0)} style={[styles.squares , {borderLeftWidth:0 , borderTopWidth:0}]}>
         {this.renderIcon(0,0)}
@@ -82,5 +83,11 @@ const styles = StyleSheet.create({
     borderWidth:1,
     height:100,
     width:100
+  },
+  logo:{
+    flex: 1,
+    width: '70%',
+    height: '100',
+    resizeMode: 'contain'
   }
 });
