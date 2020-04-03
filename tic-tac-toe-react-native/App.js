@@ -37,8 +37,8 @@ squarePress =(row,col) =>{
 renderIcon =(row,col) => {
   let value =this.state.gameState[row][col];
   switch(value){
-    case 1 :return alert("peks");
-    case -1 : return alert("pek")
+    case 1 :return <Image style={styles.logo} source={require('./img/bender.png')} />;
+    case -1 : return <Image style={styles.logo} source={require('./img/leela.png')} />;
     default :return <View/>
   }
 }
@@ -47,7 +47,8 @@ renderIcon =(row,col) => {
     
     <View style={styles.container}>
       <Image style={styles.logo} source={require('./img/futuramaLogo.png')} />
-      <View style={{flexDirection:"row"}}>
+      <View style={styles.containerSquares}>
+      <View style={styles.rows}>
       <TouchableOpacity onPress={() => this.squarePress(0,0)} style={[styles.squares , {borderLeftWidth:0 , borderTopWidth:0}]}>
         {this.renderIcon(0,0)}
       </TouchableOpacity>
@@ -55,18 +56,18 @@ renderIcon =(row,col) => {
       <TouchableOpacity onPress={() => this.squarePress(0,2)} style={[styles.squares , {borderTopWidth:0 ,borderRightWidth:0}]}>{this.renderIcon(0,2)}</TouchableOpacity>
       </View>
 
-      <View style={{flexDirection:"row"}}>
+      <View style={styles.rows}>
       <TouchableOpacity onPress={() => this.squarePress(1,0)} style={[styles.squares ,{borderLeftWidth:0}]}>{this.renderIcon(1,0)}</TouchableOpacity>
       <TouchableOpacity  onPress={() => this.squarePress(1,1)}style={[styles.squares]}>{this.renderIcon(1,1)}</TouchableOpacity>
       <TouchableOpacity onPress={() => this.squarePress(1,2)} style={[styles.squares , {borderRightWidth:0}]}>{this.renderIcon(1,2)}</TouchableOpacity>
       </View>
 
-      <View style={{flexDirection:"row"}}>
+      <View style={styles.rows}>
       <TouchableOpacity onPress={() => this.squarePress(2,0)} style={[styles.squares ,{borderLeftWidth:0 , borderBottomWidth:0}]}>{this.renderIcon(2,0)}</TouchableOpacity>
       <TouchableOpacity onPress={() => this.squarePress(2,1)} style={[styles.squares ,{borderBottomWidth:0}]}>{this.renderIcon(2,1)}</TouchableOpacity>
       <TouchableOpacity onPress={() => this.squarePress(2,2)} style={[styles.squares ,{ borderRightWidth:0 , borderBottomWidth:0}]}>{this.renderIcon(2,2)}</TouchableOpacity>
       </View>
-
+      </View>
     </View>
   );
 }
@@ -79,15 +80,27 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  containerSquares:{
+   flex:2
+  },
   squares:{
     borderWidth:1,
     height:100,
     width:100
   },
+  rows:{
+    flexDirection:'row',
+  justifyContent:'center',
+  alignItems:'center'
+  },
   logo:{
     flex: 1,
-    width: '70%',
+    width: '65%',
     height: '100',
     resizeMode: 'contain'
+  },
+  icons:{
+    width:'50',
+    height:'50'
   }
 });
