@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View ,TouchableOpacity , Image} from 'react-native';
+import { StyleSheet, View ,TouchableOpacity , Image , ImageBackground} from 'react-native';
 
 export default class App extends React.Component {
   constructor(props){
@@ -44,8 +44,7 @@ renderIcon =(row,col) => {
 }
   render(){
   return (
-    
-    <View style={styles.container}>
+    <ImageBackground style={styles.container} source={require('./img/background.jpg')}>
       <Image style={styles.logo} source={require('./img/futuramaLogo.png')} />
       <View style={styles.containerSquares}>
       <View style={styles.rows}>
@@ -68,7 +67,7 @@ renderIcon =(row,col) => {
       <TouchableOpacity onPress={() => this.squarePress(2,2)} style={[styles.squares ,{ borderRightWidth:0 , borderBottomWidth:0}]}>{this.renderIcon(2,2)}</TouchableOpacity>
       </View>
       </View>
-    </View>
+    </ImageBackground>
   );
 }
 }
@@ -84,9 +83,11 @@ const styles = StyleSheet.create({
    flex:2
   },
   squares:{
-    borderWidth:1,
+    borderWidth:3,
     height:100,
-    width:100
+    width:100,
+    color:'white',
+    borderColor:'#fff',
   },
   rows:{
     flexDirection:'row',
