@@ -27,6 +27,7 @@ export default class App extends React.Component {
   [0,0,0]
 ],currentPlayer:1,
 })};
+
 squarePress =(row,col) =>{
 // No cambiar los iconos , mantener turno
 let value =this.state.gameState[row][col];
@@ -43,8 +44,41 @@ return ;
 
   //Cambiar de turno 
   let NextPlayer = (currentPlayer == 1) ? -1 : 1 ;
-  this.setState({currentPlayer:NextPlayer})
+  this.setState({currentPlayer:NextPlayer});
+
+   let winner = this.getWinner();
+   if (winner == 1){ return alert("uno gana")
+   }
+   else if (winner == -1){return alert("dos gana")}
 };
+
+getWinner = () => {
+  let arr =this.state.gameState;
+  let numSquares = 3;
+  let sum ;
+  
+  // recorrer el array y buscar ganador en rows
+  for (let i=0 ; i < numSquares ; i++){
+    sum = arr[i][0] + arr[i][1] +arr[i][2];
+    if (sum == 3){ return 1}
+    else if(sum  == -3) {return -1}
+  }
+  // recorrer el array y buscar ganador en columnas
+  for (let i=0 ; i < numSquares ; i++){
+    sum = arr[0][i] + arr[1][i] +arr[2][i];
+    if (sum == 3){ return 1}
+    else if(sum  == -3) {return -1}
+  }
+
+  sum = arr[0][0] + arr[1][1] + arr[2][2]
+  if (sum == 3) {return 1}
+   else if (sum == -3) {return -1}
+
+   sum = arr[0][2] + arr[1][1] + arr[2][0]
+   if (sum == 3) {  return 1}
+   else if (sum == -3){return -1}
+};
+
 renderIcon =(row,col) => {
   let value =this.state.gameState[row][col];
   switch(value){
@@ -78,7 +112,7 @@ renderIcon =(row,col) => {
       <TouchableOpacity onPress={() => this.squarePress(2,2)} style={[styles.squares ,{ borderRightWidth:0 , borderBottomWidth:0}]}>{this.renderIcon(2,2)}</TouchableOpacity>
       </View>
       </View>
-      <Button title="Juego Nuevo"/>
+      <Button title="Juego Nuevo" onPress={()=> this.initGame()} />
     </ImageBackground>
   );
 }
