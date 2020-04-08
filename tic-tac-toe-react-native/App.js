@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View ,TouchableOpacity , Image , ImageBackground} from 'react-native';
+import { StyleSheet, View ,TouchableOpacity , Image , ImageBackground , Button} from 'react-native';
 
 export default class App extends React.Component {
   constructor(props){
@@ -16,29 +16,40 @@ export default class App extends React.Component {
     }
   }
 
-  componentDidMount(){
-    this.initGame();
-  }
+  // componentDidMount(){
+  //   this.initGame();
+  // }
   initGame = () =>{
     this.setState({gameState:
 [
   [0,0,0],
   [0,0,0],
   [0,0,0]
-]
+],currentPlayer:1,
 })};
 squarePress =(row,col) =>{
+// No cambiar los iconos , mantener turno
+let value =this.state.gameState[row][col];
+if (value !== 0)  {
+return ;
+}
+ 
   let currentPlayer =this.state.currentPlayer;
+  //Hacemos copia del array para no hacerlo de nuevo
   let arr = this.state.gameState.slice();
+  // el array tomara el n de columna y fila y lo actualiza
   arr[row][col]=currentPlayer;
   this.setState({gameState:arr});
 
-}
+  //Cambiar de turno 
+  let NextPlayer = (currentPlayer == 1) ? -1 : 1 ;
+  this.setState({currentPlayer:NextPlayer})
+};
 renderIcon =(row,col) => {
   let value =this.state.gameState[row][col];
   switch(value){
-    case 1 :return <Image style={styles.logo} source={require('./img/bender.png')} />;
-    case -1 : return <Image style={styles.logo} source={require('./img/leela.png')} />;
+    case 1 :return <Image style={styles.icons} source={require('./img/bender.png')} />;
+    case -1 : return <Image style={styles.icons} source={require('./img/leela.png')} />;
     default :return <View/>
   }
 }
@@ -67,6 +78,7 @@ renderIcon =(row,col) => {
       <TouchableOpacity onPress={() => this.squarePress(2,2)} style={[styles.squares ,{ borderRightWidth:0 , borderBottomWidth:0}]}>{this.renderIcon(2,2)}</TouchableOpacity>
       </View>
       </View>
+      <Button title="Juego Nuevo"/>
     </ImageBackground>
   );
 }
@@ -83,25 +95,27 @@ const styles = StyleSheet.create({
    flex:2
   },
   squares:{
+    paddingTop:5,
     borderWidth:3,
     height:100,
     width:100,
-    color:'white',
     borderColor:'#fff',
   },
   rows:{
     flexDirection:'row',
-  justifyContent:'center',
-  alignItems:'center'
+    display:'flex',
+    justifyContent:'center'
+    
   },
   logo:{
     flex: 1,
     width: '65%',
-    height: '100',
+    height: 100,
     resizeMode: 'contain'
   },
   icons:{
-    width:'50',
-    height:'50'
+    width:'100%',
+    height:'93%',
+    resizeMode: 'contain'
   }
 });
